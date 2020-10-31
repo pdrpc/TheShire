@@ -1,1 +1,51 @@
-<p>inserir-lembretes works!</p>
+<mat-card>
+
+  <form (submit)="onAdicionarlembretes(lembretesForm)" #lembretesForm="ngForm">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Digite O titulo"
+        name="titulo"
+        ngModel
+        required
+        minlength="2"
+        #titulo="ngModel"
+      />
+      <mat-error *ngIf="titulo.invalid">Digite um titulo válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Digite A data da atividade"
+        name="data"
+        ngModel
+        required
+        minlength="7"
+        #data="ngModel"
+      />
+      <mat-error *ngIf="data.invalid">Digite uma data válida</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Digite O Lembrete"
+        name="body"
+        ngModel
+        required
+        minlength="5"
+        #body="ngModel"
+      />
+      <mat-error *ngIf="body.invalid">Digite um lembrete válido</mat-error>
+    </mat-form-field>
+
+    <button color="primary" mat-raised-button>
+      Inserir Lembrete
+    </button>
+  </form>
+</mat-card>
+
