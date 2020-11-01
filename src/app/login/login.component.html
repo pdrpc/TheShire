@@ -5,7 +5,7 @@
     <div class="container">
       <button  class="btn btn-success mt-2" *ngIf="logado" (click)="logout()">Logout</button>
     </div>
-        <div  *ngIf="!logado" class="loginBox">    
+        <div  class="p-2 container" *ngIf="!logado" class="loginBox">    
             <h3>Logue-se Por favor</h3>    
             <p *ngIf="message" class="text-center error">{{message}}</p>    
           <form  [formGroup]="loginForm" (ngSubmit)="login()">    
