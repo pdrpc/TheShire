@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,10 +14,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { LembretesListaComponent } from './lembretes/lembretes-lista/lembretes-lista.component';
 import { InserirLembretesComponent } from './lembretes/inserir-lembretes/inserir-lembretes.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
     LembretesListaComponent,
     InserirLembretesComponent
   ],
@@ -27,7 +28,7 @@ import { InserirLembretesComponent } from './lembretes/inserir-lembretes/inserir
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
