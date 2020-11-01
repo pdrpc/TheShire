@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Lembrete } from './lembrete.model';
+import { Lembrete } from  './lembrete.model'
 
 import { Subject } from 'rxjs';
 
