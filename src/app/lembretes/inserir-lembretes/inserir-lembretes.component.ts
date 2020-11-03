@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LembreteService } from '../lembretes.service';
 
@@ -7,10 +7,18 @@ import { LembreteService } from '../lembretes.service';
   templateUrl: './inserir-lembretes.component.html',
   styleUrls: ['./inserir-lembretes.component.css']
 })
-export class InserirLembretesComponent{
+export class InserirLembretesComponent implements OnInit{
+  islogged = false;
 
   constructor(public lembreteService: LembreteService) {
 
+
+  }
+  ngOnInit(): void {
+    alert(sessionStorage.getItem('isLoggedIn') + " " + this.islogged);
+    if(sessionStorage.getItem('isLoggedIn') == 'true'){
+      this.islogged= true;
+    }
   }
 
     onAdicionarLembretes(form: NgForm) {

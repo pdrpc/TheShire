@@ -95,6 +95,8 @@ export class LoginComponent implements OnInit {
   logout(){
     this.authService.logout(); 
     this.logado=false 
+    sessionStorage.setItem('isLoggedIn', "false");  
+
   }
  
 

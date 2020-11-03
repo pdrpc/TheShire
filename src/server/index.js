@@ -40,25 +40,11 @@ const connection = mysql.createConnection({
 
 connection.connect(function(err){
     if(err) return console.log(err);
-    create_user(connection)
+    user.create_user(connection,router)
     user.login_user(connection,router)
     // user.create_user(connection,router)
     
   })
 
-  function create_user(conn){
-    router.post('/api/lembretes-user-create', (req, res) =>{
-        console.log(req.body)
-        var email = req.body.email
-        var pass = req.body.senha
-        var name = req.body.nome
-        var nick = req.body.nick
-        var  query = `insert into users(user_name,user_mail,user_pass,user_nick) values ('${name}','${email}','${pass}','${nick}')`;
-        conn.query(query, function (error, results, fields){
-            if(error) return console.log(error);
-            return res.send(results);
-        });
-    })
-  }
   
  

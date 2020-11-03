@@ -1,5 +1,4 @@
 {
-
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
@@ -129,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "projetoLembretes"
+  "defaultProject": "projetoLembretes",
+  "cli": {
+    "analytics": "94b619c7-0c98-4ce8-9962-63ec0a4a984f"
+  }
 }

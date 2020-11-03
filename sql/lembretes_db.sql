@@ -1,9 +1,8 @@
 create database lembretes_db;
 create table users(
 	user_ID int not null auto_increment unique,
-    user_nick varchar(64) not null,
     user_name varchar(64), 
-    user_mail varchar(360),
+    user_mail varchar(360) not null,
     user_pass varchar(64),
     primary key (user_ID)
 );

@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf= "islogged">
   <form (submit)="onAdicionarLembretes(lembretesForm)" #lembretesForm="ngForm">
     <mat-form-field>
       <input
@@ -16,7 +16,7 @@
 
     <mat-form-field>
       <input
-        type="text"
+        type="date"
         matInput
         placeholder="Digite A data da atividade"
         name="dataAtv"

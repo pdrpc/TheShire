@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LembretesListaComponent } from './lembretes/lembretes-lista/lembretes-lista.component';
 import { InserirLembretesComponent } from './lembretes/inserir-lembretes/inserir-lembretes.component';
+import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 
 
 
@@ -21,7 +22,8 @@ import { InserirLembretesComponent } from './lembretes/inserir-lembretes/inserir
     AppComponent,
     LoginComponent,
     LembretesListaComponent,
-    InserirLembretesComponent
+    InserirLembretesComponent,
+    CabecalhoComponent
   ],
   imports: [
     BrowserModule,
