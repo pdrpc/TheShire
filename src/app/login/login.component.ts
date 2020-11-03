@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import {LoginService} from './login.service'
 import { takeUntil } from 'rxjs/operators';
+import { LembreteService} from '../lembretes/lembretes.service'
 
 
 @Component({
@@ -15,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor( private formBuilder : FormBuilder,  
     // private router : Router,  
-    private authService : LoginService 
-    // private headerP : ProdutosHeaderComponent,
+    private authService : LoginService ,
+    private lembrete_service : LembreteService
     // private dataSharingService : ProdutosHeaderServiceService 
     ) { }
     message: string;  
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('isLoggedIn', "true");  
             sessionStorage.setItem('token', this.f.id_usuario.value);  
             this.logado = true
+            this.lembrete_service.logado.next(true);
             // this.dataSharingService.isUserLoggedIn.next(true);
             // this.dataSharingService.nomeUser.next(nome);
             // this.router.navigate([this.returnUrl]); 
@@ -95,8 +97,7 @@ export class LoginComponent implements OnInit {
   logout(){
     this.authService.logout(); 
     this.logado=false 
-    sessionStorage.setItem('isLoggedIn', "false");  
-
+    this.lembrete_service.logado.next(false);
   }
  
 

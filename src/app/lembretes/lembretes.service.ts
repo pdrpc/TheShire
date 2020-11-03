@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-
 import { Lembrete } from  './lembrete.model'
-
 import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
