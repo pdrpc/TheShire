@@ -8,9 +8,11 @@ import { LembreteService } from '../lembretes.service';
   styleUrls: ['./inserir-lembretes.component.css']
 })
 export class InserirLembretesComponent{
-
+  logado : boolean;
   constructor(public lembreteService: LembreteService) {
-
+    this.lembreteService.logado.subscribe( value => {
+      this.logado = value;
+    });
   }
 
     onAdicionarLembretes(form: NgForm) {
