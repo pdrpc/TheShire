@@ -1,5 +1,5 @@
 <body>
-  <div class="p-2 container list-group list-group-flush">
+  <div  id="login"  class="p-2 container list-group list-group-flush">
     <h1 *ngIf="logado">Bem-vindo {{ id_usuario }}</h1>
     <div class="container">
       <button class="btn btn-success mt-2" *ngIf="logado" (click)="logout()">
@@ -40,9 +40,12 @@
           <button class="btn btn-success" type="submit">Log in</button>
         </div>
       </form>
+      <div>
+        <button class="btn btn-success" (click)="showMe()">Sing in</button>
+      </div>
     </div>
   </div>
-  <div *ngIf="!logado" class="p-2 container">
+  <div id="cadastro" *ngIf="!logado" class="p-2 container" style="display: none;">
     <h1>Crie um Usuario</h1>
     <form [formGroup]="createUser" (ngSubmit)="create_user()">
       <label for="" class="mt-2">Seu nome:</label>
@@ -69,7 +72,7 @@
         class="form-control mt-2"
         formControlName="nick"
       />
-      <button class="btn btn-success mt-2" type="submit">
+      <button class="btn btn-success mt-2" type="submit" (click)="showMe()">
         Sign in
       </button>
     </form>
