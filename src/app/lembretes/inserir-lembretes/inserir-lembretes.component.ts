@@ -9,6 +9,7 @@ import { LembreteService } from '../lembretes.service';
   templateUrl: './inserir-lembretes.component.html',
   styleUrls: ['./inserir-lembretes.component.css']
 })
+
 export class InserirLembretesComponent implements OnInit{
 
   private modo: string = 'criar';
@@ -44,13 +45,13 @@ export class InserirLembretesComponent implements OnInit{
             this.modo = 'editar';
             this.titulo = paramMap.get('titulo');
             this.estaCarregando = true;
-            this.lembreteService.getLembretes(this.titulo).subscribe((dadosList) => {
+            this.lembreteService.getLembrete(this.titulo).subscribe((dadosList) => {
               this.estaCarregando = false;
               this.Lembrete = {
                 titulo: dadosList.titulo,
                 dataCad: dadosList.dataCad,
                 dataAtv: dadosList.dataAtv,
-                body: dadosList.body,
+                body: dadosList.body
               };
               this.form.setValue({
                 titulo: this.Lembrete.titulo,
@@ -65,6 +66,7 @@ export class InserirLembretesComponent implements OnInit{
           }
         });
       }
+
 
 
     onAdicionarLembretes(form: NgForm) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Lembrete } from  './lembrete.model';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LembreteService {
-
-  constructor() { }
+  public logado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   private lembretes: Lembrete [] = [];
   private listaLembretesAtualizada = new Subject<{lembretes: Lembrete[], maxLembretes: number}>();
@@ -36,7 +36,7 @@ export class LembreteService {
     subscribe(
       (dados) => {
         this.lembretes = dados.lembretes;
-        this.listaLembretesAtualizada.next({lembrete: [...this.lembretes], maxLembretes:dados.maxLembretes });
+        this.listaLembretesAtualizada.next({lembretes: [...this.lembretes], maxLembretes:dados.maxLembretes });
       }
     )
   }
@@ -49,12 +49,15 @@ export class LembreteService {
         body: body
     };
     this.lembretes.push(lembrete);
-    this.listaLembretesAtualizada.next([...this.lembretes]);
+    this.httpClient.post<{body: string, lembrete: Lembrete}>('http://localhost:3000/api/clientes',
+    lembrete).subscribe((dados) => {
+      this.router.navigate(['/']);
+    })
   }
 
   getLembrete (titulo: string){
     return this.httpClient.get<{
-      titulo: string, dataCad: Date, dataAtv: Date,
+      titulo: string, dataCad: Date, dataAtv: Date, body: String
     }>(`http://localhost:3000/api/lembretes/${titulo}`);
   }
 
@@ -63,7 +66,7 @@ export class LembreteService {
   }
 
   removerLembrete (titulo: string){
-    return this.httpClient.delete (`http://localhost:3000/api/lembretes/${id}`);
+    return this.httpClient.delete (`http://localhost:3000/api/lembretes/${titulo}`);
 
   }
 
