@@ -8,6 +8,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class LembreteService {
   public logado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public userMail: BehaviorSubject<string> = new BehaviorSubject<string>("");
+
   constructor() { }
 
   private listaLembretesAtualizada = new Subject<Lembrete[]>();

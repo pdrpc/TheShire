@@ -17,16 +17,15 @@ function login_user(conn,router){
 }
 
 function create_user(conn,router){
-    router.post('/create-user', (req, res) =>{
+    router.post('/api/lembretes-user-create', (req, res) =>{
         console.log(req.body)
-        var email = req.body.id_usuario
-        var pass = req.body.password
-        var name = req.body.name
+        var email = req.body.email
+        var pass = req.body.senha
+        var name = req.body.nome
         var  query = `insert into users(user_name,user_mail,user_pass) values ('${name}','${email}','${pass}')`;
         conn.query(query, function (error, results, fields){
             if(error) return console.log(error);
             return res.send(results);
         });
     })
-
-}
+  }

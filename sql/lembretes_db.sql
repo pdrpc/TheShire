@@ -1,4 +1,4 @@
-create database lembretes_db;
+create database lembretes;
 create table users(
 	user_ID int not null auto_increment unique,
     user_name varchar(64), 

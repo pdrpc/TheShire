@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     nome: new FormControl('', Validators.nullValidator && Validators.required),
     email: new FormControl('', Validators.nullValidator && Validators.required),
     senha: new FormControl('', Validators.nullValidator && Validators.required),
-    nick: new FormControl('', Validators.nullValidator && Validators.required),
+    // nick: new FormControl('', Validators.nullValidator && Validators.required),
   });
 
   ngOnInit(): void {
@@ -84,8 +84,10 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('token', this.f.id_usuario.value);
               this.logado = true;
               this.lembrete_service.logado.next(true);
+              this.lembrete_service.userMail.next(this.id_usuario);
+              // alert(this.id_usuario)
               // this.dataSharingService.isUserLoggedIn.next(true);
-              // this.dataSharingService.nomeUser.next(nome);
+              // this.lembrete_service.nomeUser.next(nome);
               // this.router.navigate([this.returnUrl]);
             } else {
               this.message = 'Coloque os valores corretos';
@@ -112,6 +114,7 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     this.logado = false;
     this.lembrete_service.logado.next(false);
+    this.lembrete_service.userMail.next("");
   }
 
   showMe() {
