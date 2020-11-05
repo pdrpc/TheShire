@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
               // this.lembrete_service.nomeUser.next(nome);
               // this.router.navigate([this.returnUrl]);
             } else {
-              this.message = 'Coloque os valores corretos';
+              this.message = 'Email ou senha incorretos!';
             }
           }
         });
