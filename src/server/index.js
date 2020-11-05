@@ -44,7 +44,4 @@ connection.connect(function(err){
     user.login_user(connection,router)
     // user.create_user(connection,router)
     
-  })
-
-  
- 
+  }) 
