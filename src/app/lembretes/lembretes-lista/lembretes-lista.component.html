@@ -7,8 +7,8 @@
         <p>Descrição: {{ lembrete.body }}</p>
         <hr />
       <mat-action-row>
-        <button mat-button color="primary" (click)="EditarLembrete($event.target.value)">Editar</button>
-        <button mat-button color="warn" (click)="DeleteLembrete($event.target.value)">Deletar</button>
+        <button mat-button color="primary" (click)="EditarLembrete($event.target.value)" value="{{lembrete.lembrete_id}}">Editar</button>
+        <button mat-button color="warn" (click)="DeleteLembrete($event.target.value)" value="{{lembrete.lembrete_id}}">Deletar</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>

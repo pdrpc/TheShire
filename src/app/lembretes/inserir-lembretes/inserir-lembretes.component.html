@@ -3,10 +3,13 @@
   <form [formGroup]="createLembrete" (ngSubmit)="create_lembrete()">
       <label for="titulo" class="mt-2">Seu Titulo: </label>
       <input class="form-control mt-2" formControlName="titulo"/>
+
       <label for="dataAtv" class="mt-2">Digite a data</label>
-      <input class="form-control mt-2" formControlName="dataAtv"/>
+      <input type="date" class="form-control mt-2" formControlName="dataAtv"/>
+
       <label for="body" type="text" class="mt-2">Digite o lembrete: </label>
       <input class="form-control mt-2" formControlName="body"/>
+
     <button color="primary" mat-raised-button>
       Inserir Lembrete
     </button>

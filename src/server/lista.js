@@ -4,7 +4,8 @@ function adicionarLembrete(conn,router){
     router.post('/api/lembretes-lembrete-create', (req, res) =>{
         console.log(req.body)
         var titulo = req.body.titulo
-        var dataCad = moment()
+        var dataCad = moment();
+        dataCad = dataCad.format("YYYY-MM-DD HH:mm:ss");
         console.log(dataCad)
         var dataAtv = req.body.dataAtv
         var body = req.body.body
