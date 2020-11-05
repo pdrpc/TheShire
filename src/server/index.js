@@ -42,6 +42,7 @@ const connection = mysql.createConnection({
 connection.connect(function(err){
     if(err) return console.log(err);
     create_user(connection)
+    console.log('chegando aqui')
     user.login_user(connection,router)
     // user.create_user(connection,router)
     lista.adicionarLembrete(connection,router)

@@ -18,7 +18,6 @@ export class InserirLembretesComponent implements OnInit{
   private authService : LembreteService;
   createLembrete = new FormGroup({
     titulo: new FormControl('', Validators.nullValidator && Validators.required),
-    dataCad: new FormControl('', Validators.nullValidator && Validators.required),
     dataAtv: new FormControl('', Validators.nullValidator && Validators.required),
     body : new FormControl('', Validators.nullValidator && Validators.required)
   });
@@ -33,7 +32,8 @@ export class InserirLembretesComponent implements OnInit{
 
       destroy$: Subject<boolean> = new Subject<boolean>();
       create_lembrete(){
-        this.authService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
+        alert(this.createLembrete.value)
+        this.lembreteService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
           console.log('message::::', data);
           if(data!=null){
             alert("Lembrete cadastrado com sucesso");

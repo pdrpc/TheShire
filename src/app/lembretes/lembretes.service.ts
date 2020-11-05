@@ -12,6 +12,7 @@ export class LembreteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   CreateLembrete(lembrete: any){
+    alert(lembrete)
     return this.http.post("/api/lembretes-lembrete-create", lembrete);
   }
 
