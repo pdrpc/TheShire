@@ -9,7 +9,8 @@ function adicionarLembrete(conn, router) {
     console.log(data_criar);
     var data_final = req.body.data_final;
     var lmbrt_body = req.body.lmbrt_body;
-    var query = `insert into lembretesLista(lmbrt_nome,data_criar,data_final,lmbrt_body) values ('${lmbrt_nome}','${data_criar}','${data_final}','${lmbrt_body}')`;
+    var user_ID = req.body.user_ID;
+    var query = `insert into lembretesLista(lmbrt_nome,data_criar,data_final,lmbrt_body,userID) values ('${lmbrt_nome}','${data_criar}','${data_final}','${lmbrt_body}','${user_ID}')`;
     conn.query(query, function (error, results, fields) {
       if (error) return console.log(error);
       return res.send(results);
