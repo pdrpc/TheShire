@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Lembrete } from '../lembrete.model';
 import { LembreteService } from '../lembretes.service';
 import { Subscription, Observable, from } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-lembretes-lista',
@@ -29,6 +31,14 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
     this.lembretesSubscription.unsubscribe();
     this.authObserver.unsubscribe();
   }
+
+  GetLembrete(){
+    this.lembreteService.GetLembrete(this.lembretes.value).pipe(takeUntil(this.destroy$)).subscribe((data) =>{
+
+    })
+  }
+
+  // this.authService.GetUser(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
 
   EditarLembrete(lmbrt_ID){
     var EditarId = {}

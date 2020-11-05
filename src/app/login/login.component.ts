@@ -61,10 +61,7 @@ export class LoginComponent implements OnInit {
       alert(this.loginForm);
       return;
     } else {
-      this.authService
-        .GetUser(this.loginForm.value)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((data) => {
+      this.authService.GetUser(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
           console.log('message::::', data);
           if (data != null) {
             this.user_size = data;

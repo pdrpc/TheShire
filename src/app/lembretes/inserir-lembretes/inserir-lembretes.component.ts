@@ -14,7 +14,6 @@ import { Subject } from 'rxjs';
 export class InserirLembretesComponent implements OnInit{
 
   public Lembrete: Lembrete;
-  private authService : LembreteService;
   createLembrete = new FormGroup({
     lmbrt_nome: new FormControl('', Validators.nullValidator && Validators.required),
     data_final: new FormControl('', Validators.nullValidator && Validators.required),
@@ -33,7 +32,7 @@ export class InserirLembretesComponent implements OnInit{
 
       destroy$: Subject<boolean> = new Subject<boolean>();
       create_lembrete(){
-        alert(this.createLembrete.value)
+        // alert(this.createLembrete.value)
         this.lembreteService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
           console.log('message::::', data);
           if(data!=null){

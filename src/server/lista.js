@@ -16,9 +16,9 @@ function adicionarLembrete(conn, router) {
     });
   });
 
-function getLembrete(conn){
+function GetLembrete(conn){
     router.get("/api/lembretes-lembrete-create", (req, res) =>{
-        query = 'SELECT * FROM lembretesLista';
+        query = 'SELECT lmbrt_nome, data_criar, data_final, lmbrt_body, user_ID FROM lembretesLista';
         conn.query(query, function (error, results, fields){
             if(error) return console.log(error);
             //Pego o nome das rows do sql
