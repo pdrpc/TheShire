@@ -3,7 +3,7 @@
     <mat-expansion-panel *ngFor="let lemb of lembrete">
         <mat-expansion-panel-header>{{ lemb.lmbrt_nome }}</mat-expansion-panel-header>
         <hr />
-        <p>Cadastrado em: {{ lemb.data_criar }} Para: {{ lemb.data_final }}</p>
+        <p>Cadastrado em: {{ lemb.data_criar | date:'d/MMM/y' }} Para: {{ lemb.data_final | date:'d/MMM/y'}}</p>
         <hr />
         <p>Descrição: {{ lemb.lmbrt_body }}</p>
         <hr />
