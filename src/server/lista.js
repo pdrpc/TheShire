@@ -1,4 +1,4 @@
-module.exports = { adicionarLembrete };
+module.exports = { adicionarLembrete, GetLembretes };
 const moment = require("moment");
 function adicionarLembrete(conn, router) {
   router.post("/api/lembretes-lembrete-create", (req, res) => {
@@ -15,15 +15,16 @@ function adicionarLembrete(conn, router) {
       return res.send(results);
     });
   });
+}
 
-function GetLembrete(conn){
-    router.get("/api/lembretes-lembrete-create", (req, res) =>{
-        query = 'SELECT lmbrt_nome, data_criar, data_final, lmbrt_body, user_ID FROM lembretesLista';
+function GetLembretes(conn, router){
+    router.get("/api/lembretes-lembrete-get", (req, res) =>{
+        query = 'SELECT lmbrt_nome,data_criar,data_final,lmbrt_body FROM lembretesLista';
         conn.query(query, function (error, results, fields){
             if(error) return console.log(error);
+            console.log('get lembretes')
             //Pego o nome das rows do sql
             return res.send(results);
         });
-    })
-    }
+    });    
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Lembrete } from '../lembrete.model';
 import { LembreteService } from '../lembretes.service';
-import { Subscription, Observable, from } from 'rxjs';
+import { Subscription, Observable, from, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DatePipe } from '@angular/common'
+
 
 
 @Component({
@@ -12,11 +15,16 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class LembretesListaComponent implements OnInit, OnDestroy {
 
-  lembretes : Lembrete[] = [];
+  
   logado : boolean;
 
   private lembretesSubscription: Subscription;
   private authObserver: Subscription;
+  public lembrete
+  lmbrt_nome;
+  data_criar;
+  data_final;
+  lmbrt_body;
 
   constructor(public lembreteService: LembreteService) {
     this.lembreteService.logado.subscribe( value => {
@@ -24,7 +32,9 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getLembretes();
+  }
 
 
   ngOnDestroy(): void{
@@ -32,11 +42,31 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
     this.authObserver.unsubscribe();
   }
 
-  GetLembrete(){
-    this.lembreteService.GetLembrete(this.lembretes.value).pipe(takeUntil(this.destroy$)).subscribe((data) =>{
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
-    })
+  getLembretes() {
+    console.log('entrou no metodo?')
+    this.lembreteService.GetLembretes().subscribe(
+      data => { this.lembrete = data, console.log("Valor que vem da api " + data)
+        console.log(data)
+      },    
+  
+      err => console.error(err),
+      () => console.log('getting lembretes')
+    );
+      for (let index = 0; index < this.lembrete; index++) {
+        this.lmbrt_nome = this.lmbrt_nome[index]['lmbrt_nome'];
+        this.data_criar = this.data_criar[index]['data_criar'];
+        this.data_final = this.data_final[index]['data_final'];
+        this.lmbrt_body = this.lmbrt_body[index]['lmbrt_body'];
+      }
+      this.data_criar = moment(this.data_criar).format("l" );
+      this.data_final = moment(this.data_final).format("l" );
+      alert(this.data_criar + " " + this.data_final);
+      console.log('Saiu do for?')
   }
+
+  
 
   // this.authService.GetUser(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
 
