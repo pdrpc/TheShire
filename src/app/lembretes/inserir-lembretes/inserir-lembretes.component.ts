@@ -33,9 +33,13 @@ export class InserirLembretesComponent implements OnInit {
   });
 
   logado: boolean;
+  user_ID: number;
   constructor(public lembreteService: LembreteService) {
     this.lembreteService.logado.subscribe((value) => {
       this.logado = value;
+    });
+    this.lembreteService.user_ID.subscribe((value) =>{
+      this.user_ID = value;
     });
   }
 
@@ -43,10 +47,8 @@ export class InserirLembretesComponent implements OnInit {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   create_lembrete() {
-    // alert(this.createLembrete.value)
-    var user_ID  = sessionStorage.getItem('user_ID');
-    var user_ID_num = parseInt(user_ID)
-    this.createLembrete.get('user_ID').setValue(user_ID_num);
+    alert(this.user_ID)
+    this.createLembrete.get('user_ID').setValue(this.user_ID);
     this.lembreteService
       .CreateLembrete(this.createLembrete.value)
       .pipe(takeUntil(this.destroy$))

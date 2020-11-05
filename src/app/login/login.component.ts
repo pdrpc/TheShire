@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { LoginService } from './login.service';
@@ -29,6 +24,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean;
   public user_size;
   id_usuario;
+  user_ID;
   senha;
   logado = false;
 
@@ -70,6 +66,7 @@ export class LoginComponent implements OnInit {
               this.id_usuario = this.user_size[index]['user_mail'];
               this.senha = this.user_size[index]['user_pass'];
               var nome = this.user_size[index]['nome_usuario'];
+              var user_ID = this.user_ID[index]['user_ID']
             }
             if (
               this.f.id_usuario.value == this.id_usuario &&
@@ -79,6 +76,7 @@ export class LoginComponent implements OnInit {
               this.submitted = true;
               sessionStorage.setItem('isLoggedIn', 'true');
               sessionStorage.setItem('user_ID', this.f.id_usuario.value);
+              this.lembrete_service.user_ID.next(this.user_ID)
               this.logado = true;
               this.lembrete_service.logado.next(true);
               this.lembrete_service.userMail.next(this.id_usuario);
@@ -115,5 +113,15 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('user_ID', '');
   }
 
-  
+  showMe() {
+    var hideLogin = document.getElementById('login');
+    var hideSignIn = document.getElementById('cadastro');
+    if (hideSignIn.style.display == '' || hideSignIn.style.display == 'none') {
+      hideSignIn.style.display = 'inline';
+      hideLogin.style.display = 'none';
+    } else {
+      hideSignIn.style.display = 'none';
+      hideLogin.style.display = 'inline';
+    }
+  }
 }

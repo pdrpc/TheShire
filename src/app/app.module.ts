@@ -25,7 +25,7 @@ import { CabecalhoComponent } from './cabecalho/cabecalho.component';
     LoginComponent,
     LembretesListaComponent,
     InserirLembretesComponent,
-    CabecalhoComponent
+    CabecalhoComponent,
   ],
   imports: [
     BrowserModule,

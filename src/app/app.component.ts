@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Lembrete } from './lembretes/lembrete.model'
+import { Component, OnInit } from '@angular/core';
+import { Lembrete } from './lembretes/lembrete.model';
+import { Routes, RouterModule, Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +9,13 @@ import { Lembrete } from './lembretes/lembrete.model'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
+  constructor(private router : Router){}
+
+  mgOnInit(): void{
+    this.router.navigate(['/login']);
+  }
+  
   lembretes: Lembrete[] = [];
   onLembreteAdicionado(Lembrete){
     this.lembretes = [...this.lembretes, Lembrete];
