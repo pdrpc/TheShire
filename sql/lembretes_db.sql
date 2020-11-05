@@ -1,4 +1,3 @@
-create database lembretes;
 create table users(
 	user_ID int not null auto_increment unique,
     user_name varchar(64), 
@@ -6,7 +5,7 @@ create table users(
     user_pass varchar(64),
     primary key (user_ID)
 );
-create table lembretes(
+create table lembretesLista(
 	lmbrt_ID int not null auto_increment unique,
 	lmbrt_nome varchar(255) not null,
     data_criar date not null,
