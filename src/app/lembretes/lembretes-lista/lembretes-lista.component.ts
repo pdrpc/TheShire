@@ -60,8 +60,8 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
         this.data_final = this.data_final[index]['data_final'];
         this.lmbrt_body = this.lmbrt_body[index]['lmbrt_body'];
       }
-      this.data_criar = moment(this.data_criar).format("l" );
-      this.data_final = moment(this.data_final).format("l" );
+      this.data_criar = moment(this.data_criar).format("MMM Do YY");
+      this.data_final = moment(this.data_final).format("MMM Do YY");
       alert(this.data_criar + " " + this.data_final);
       console.log('Saiu do for?')
   }
