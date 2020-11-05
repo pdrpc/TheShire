@@ -1,50 +1,14 @@
-<mat-card>
-  <form (submit)="onAdicionarLembretes(lembretesForm)" #lembretesForm="ngForm">
-    <mat-form-field>
-      <input
-        type="text"
-        matInput
-        placeholder="Digite O titulo"
-        name="titulo"
-        ngModel
-        required
-        minlength="2"
-        #titulo="ngModel"
-      />
-      <mat-error *ngIf="titulo.invalid">Digite um titulo válido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input
-        type="text"
-        matInput
-        placeholder="Digite A data da atividade"
-        name="dataAtv"
-        ngModel
-        required
-        minlength="7"
-        #data="ngModel"
-      />
-      <mat-error *ngIf="data.invalid">Digite uma data válida</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input
-        type="text"
-        matInput
-        placeholder="Digite O Lembrete"
-        name="body"
-        ngModel
-        required
-        minlength="5"
-        #body="ngModel"
-      />
-      <mat-error *ngIf="body.invalid">Digite um lembrete válido</mat-error>
-    </mat-form-field>
-
+<div>
+  <h1>Insira seu lembrete</h1>
+  <form [formGroup]="createLembrete" (ngSubmit)="create_lembrete()">
+      <label for="titulo" class="mt-2">Seu Titulo: </label>
+      <input class="form-control mt-2" formControlName="titulo"/>
+      <label for="dataAtv" class="mt-2">Digite a data</label>
+      <input class="form-control mt-2" formControlName="dataAtv"/>
+      <label for="body" type="text" class="mt-2">Digite o lembrete: </label>
+      <input class="form-control mt-2" formControlName="body"/>
     <button color="primary" mat-raised-button>
       Inserir Lembrete
     </button>
   </form>
-</mat-card>
-
+</div>

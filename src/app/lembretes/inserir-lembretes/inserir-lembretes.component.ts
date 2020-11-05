@@ -2,7 +2,9 @@ import { Component, OnInit} from '@angular/core';
 import { FormControl, Validators, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Lembrete } from '../lembrete.model';
+import { takeUntil } from 'rxjs/operators';
 import { LembreteService } from '../lembretes.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-inserir-lembretes',
@@ -12,11 +14,14 @@ import { LembreteService } from '../lembretes.service';
 
 export class InserirLembretesComponent implements OnInit{
 
-  private modo: string = 'criar';
-  private titulo: string;
   public Lembrete: Lembrete;
-  public estaCarregando: boolean = false;
-  form: FormGroup;
+  private authService : LembreteService;
+  createLembrete = new FormGroup({
+    titulo: new FormControl('', Validators.nullValidator && Validators.required),
+    dataCad: new FormControl('', Validators.nullValidator && Validators.required),
+    dataAtv: new FormControl('', Validators.nullValidator && Validators.required),
+    body : new FormControl('', Validators.nullValidator && Validators.required)
+  });
 
   constructor(
     public lembreteService: LembreteService,
@@ -24,69 +29,18 @@ export class InserirLembretesComponent implements OnInit{
     ){}
 
 
-    ngOnInit() {
-        this.form = new FormGroup({
-          titulo: new FormControl(null, {
-            validators: [Validators.required, Validators.minLength(3)],
-          }),
-          dataCad: new FormControl(null, {
-            validators: [Validators.required],
-          }),
-          dataAtv: new FormControl(null, {
-            validators: [Validators.required],
-          }),
-          body: new FormControl(null, {
-            validators: [Validators.required],
-          })
-        });
+    ngOnInit(): void {}
 
-        this.route.paramMap.subscribe((paramMap) => {
-          if (paramMap.has('titulo')) {
-            this.modo = 'editar';
-            this.titulo = paramMap.get('titulo');
-            this.estaCarregando = true;
-            this.lembreteService.getLembrete(this.titulo).subscribe((dadosList) => {
-              this.estaCarregando = false;
-              this.Lembrete = {
-                titulo: dadosList.titulo,
-                dataCad: dadosList.dataCad,
-                dataAtv: dadosList.dataAtv,
-                body: dadosList.body
-              };
-              this.form.setValue({
-                titulo: this.Lembrete.titulo,
-                dataCad: this.Lembrete.dataCad,
-                dataAtv: this.Lembrete.dataAtv,
-                body: this.Lembrete.body
-              });
-            });
-          } else {
-            this.modo = 'criar';
-            this.titulo = null;
+      destroy$: Subject<boolean> = new Subject<boolean>();
+      create_lembrete(){
+        this.authService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
+          console.log('message::::', data);
+          if(data!=null){
+            alert("Lembrete cadastrado com sucesso");
+          }
+          else{
+            alert("O lembrete não foi cadastrado");
           }
         });
       }
-
-
-
-    onAdicionarLembretes(form: NgForm) {
-      if (this.form.invalid) return;
-      this.estaCarregando = true;
-      if (this.modo === 'criar') {
-        this.lembreteService.adicionarLembrete(
-          this.form.value.titulo,
-          this.form.value.dataCad,
-          this.form.value.dataAtv,
-          this.form.value.body
-        );
-      } else {
-        this.lembreteService.atualizarLembrete(
-          this.form.value.titulo,
-          this.form.value.dataCad,
-          this.form.value.dataAtv,
-          this.form.value.body
-        );
-      }
-    this.form.reset();
-  }
 }

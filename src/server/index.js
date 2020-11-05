@@ -12,11 +12,12 @@ var fileExtension = require('file-extension')
 app.listen(8081, () => {
     console.log('CORS-enabled web server listening on port 8081')
 })
-  
+
 var https = require('https');
 const { query } = require('express');
 https.createServer(app).listen(443);
 const user = require('./usuarios');
+const lista = require('./lista');
 const { off } = require('process');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,7 +44,7 @@ connection.connect(function(err){
     create_user(connection)
     user.login_user(connection,router)
     // user.create_user(connection,router)
-    
+    lista.adicionarLembrete(connection,router)
   })
 
   function create_user(conn){
@@ -60,5 +61,4 @@ connection.connect(function(err){
         });
     })
   }
-  
- 
+
