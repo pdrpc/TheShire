@@ -30,13 +30,13 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
     this.authObserver.unsubscribe();
   }
 
-  EditarLembrete(lembrete_id){
+  EditarLembrete(lmbrt_ID){
     var EditarId = {}
-    EditarId = {"idLembrete": lembrete_id };
+    EditarId = {"idLembrete": lmbrt_ID };
   }
 
-  DeleteLembrete(lembrete_id){
+  DeleteLembrete(lmbrt_ID){
     var DeletarId = {}
-    DeletarId = {"idLembrete": lembrete_id };
+    DeletarId = {"idLembrete": lmbrt_ID };
   }
 }

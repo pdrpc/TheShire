@@ -7,6 +7,7 @@ create table users(
     primary key (user_ID)
 );
 create table lembretes(
+	lmbrt_ID int not null auto_increment unique,
 	lmbrt_nome varchar(255) not null,
     data_criar date not null,
     data_final date,

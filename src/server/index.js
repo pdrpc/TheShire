@@ -12,11 +12,12 @@ var fileExtension = require('file-extension')
 app.listen(8081, () => {
     console.log('CORS-enabled web server listening on port 8081')
 })
-  
+
 var https = require('https');
 const { query } = require('express');
 https.createServer(app).listen(443);
 const user = require('./usuarios');
+const lista = require('./lista');
 const { off } = require('process');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,11 +41,23 @@ const connection = mysql.createConnection({
 
 connection.connect(function(err){
     if(err) return console.log(err);
-    user.create_user(connection,router)
+    create_user(connection)
+    console.log('chegando aqui')
     user.login_user(connection,router)
     // user.create_user(connection,router)
-    
+    lista.adicionarLembrete(connection,router)
   })
 
-  
- 
+  function create_user(conn){
+    router.post('/api/lembretes-user-create', (req, res) =>{
+        console.log(req.body)
+        var email = req.body.email
+        var pass = req.body.senha
+        var name = req.body.nome
+        var  query = `insert into users(user_name,user_mail,user_pass) values ('${name}','${email}','${pass}')`;
+        conn.query(query, function (error, results, fields){
+            if(error) return console.log(error);
+            return res.send(results);
+        });
+    })
+  }

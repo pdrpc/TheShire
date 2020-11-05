@@ -1,5 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, Validators, FormGroup, NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Lembrete } from '../lembrete.model';
+import { takeUntil } from 'rxjs/operators';
 import { LembreteService } from '../lembretes.service';
 import { Subject } from 'rxjs';
 
@@ -8,7 +11,16 @@ import { Subject } from 'rxjs';
   templateUrl: './inserir-lembretes.component.html',
   styleUrls: ['./inserir-lembretes.component.css']
 })
-export class InserirLembretesComponent{
+export class InserirLembretesComponent implements OnInit{
+
+  public Lembrete: Lembrete;
+  private authService : LembreteService;
+  createLembrete = new FormGroup({
+    lmbrt_nome: new FormControl('', Validators.nullValidator && Validators.required),
+    data_final: new FormControl('', Validators.nullValidator && Validators.required),
+    lmbrt_body : new FormControl('', Validators.nullValidator && Validators.required)
+  });
+  
   logado : boolean;
   constructor(public lembreteService: LembreteService) {
     this.lembreteService.logado.subscribe( value => {
@@ -21,7 +33,8 @@ export class InserirLembretesComponent{
 
       destroy$: Subject<boolean> = new Subject<boolean>();
       create_lembrete(){
-        this.authService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
+        alert(this.createLembrete.value)
+        this.lembreteService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
           console.log('message::::', data);
           if(data!=null){
             alert("Lembrete cadastrado com sucesso");
