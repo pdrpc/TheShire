@@ -96,6 +96,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -129,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "projetoLembretes"
+  "defaultProject": "projetoLembretes",
+  "cli": {
+    "analytics": "94b619c7-0c98-4ce8-9962-63ec0a4a984f"
+  }
 }

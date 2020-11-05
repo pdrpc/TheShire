@@ -1,8 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { FormControl, Validators, FormGroup, NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Lembrete } from '../lembrete.model';
-import { takeUntil } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 import { LembreteService } from '../lembretes.service';
 import { Subject } from 'rxjs';
 
@@ -11,21 +8,13 @@ import { Subject } from 'rxjs';
   templateUrl: './inserir-lembretes.component.html',
   styleUrls: ['./inserir-lembretes.component.css']
 })
-
-export class InserirLembretesComponent implements OnInit{
-
-  public Lembrete: Lembrete;
-  private authService : LembreteService;
-  createLembrete = new FormGroup({
-    titulo: new FormControl('', Validators.nullValidator && Validators.required),
-    dataAtv: new FormControl('', Validators.nullValidator && Validators.required),
-    body : new FormControl('', Validators.nullValidator && Validators.required)
-  });
-
-  constructor(
-    public lembreteService: LembreteService,
-    public route: ActivatedRoute
-    ){}
+export class InserirLembretesComponent{
+  logado : boolean;
+  constructor(public lembreteService: LembreteService) {
+    this.lembreteService.logado.subscribe( value => {
+      this.logado = value;
+    });
+  }
 
 
     ngOnInit(): void {}

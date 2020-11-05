@@ -10,12 +10,16 @@ import { Subscription, Observable, from } from 'rxjs';
 })
 export class LembretesListaComponent implements OnInit, OnDestroy {
 
-  lembretes: Lembrete[] = [];
+  lembretes : Lembrete[] = [];
+  logado : boolean;
+
   private lembretesSubscription: Subscription;
   private authObserver: Subscription;
 
   constructor(public lembreteService: LembreteService) {
-
+    this.lembreteService.logado.subscribe( value => {
+      this.logado = value;
+    });
   }
 
   ngOnInit(): void {}

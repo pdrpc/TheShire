@@ -1,4 +1,5 @@
-<mat-accordion *ngIf="lembretes.length > 0">
+<div *ngIf="logado">
+  <mat-accordion *ngIf="lembretes.length > 0">
     <mat-expansion-panel *ngFor="let lembrete of lembretes">
         <mat-expansion-panel-header>{{ lembrete.titulo }}</mat-expansion-panel-header>
         <hr />
@@ -15,3 +16,4 @@
   <p class="mat-body-1" style="text-align: center;" *ngIf="lembretes.length <= 0">
     Nenhum lembrete cadastrado
   </p>
+</div>  
