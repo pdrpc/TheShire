@@ -7,11 +7,14 @@ import { LembreteService } from '../lembretes/lembretes.service';
   styleUrls: ['./cabecalho.component.css'],
 })
 export class CabecalhoComponent implements OnInit {
-  userMail: string;
+  userMail: string;logado;
   constructor(public lembreteService: LembreteService) {
     this.lembreteService.userMail.subscribe((value) => {
       this.userMail = value;
       // alert(this.userMail)
+    });
+    this.lembreteService.logado.subscribe((value) => {
+      this.logado = value;
     });
   }
 

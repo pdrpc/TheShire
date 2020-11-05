@@ -18,8 +18,8 @@ export class LembreteService {
     return this.http.post("/api/lembretes-lembrete-create", lembrete);
   }
 
-  public GetLembretes() {
-    return this.http.get("/api/lembretes-lembrete-get");
+  public GetLembretes(user_Id) {
+    return this.http.post("/api/lembretes-lembrete-get",user_Id);
   }
 
 

@@ -46,7 +46,11 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
 
   getLembretes() {
     console.log('entrou no metodo?')
-    this.lembreteService.GetLembretes().subscribe(
+    var user_ID  = sessionStorage.getItem('user_ID');
+    var user_ID_num = parseInt(user_ID)
+    var dict_user = { }
+    dict_user = {"user_ID" : user_ID_num}
+    this.lembreteService.GetLembretes(dict_user).subscribe(
       data => { this.lembrete = data, console.log("Valor que vem da api " + data)
         console.log(data)
       },    

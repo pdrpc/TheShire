@@ -1,5 +1,5 @@
 <body>
-  <div *ngIf="logado" class="container">
+  <div  class="container">
     <h1>Bem-vindo</h1>
     <button class="btn btn-primary mt-2" (click)="logout()">Log out</button>
   </div>
@@ -46,7 +46,7 @@
     </div>
  -->
 
-  <div id="login" *ngIf="!logado" class="p-2 container loginBox">
+  <div id="login" class="p-2 container loginBox">
     <h1>Log in</h1>
     <p *ngIf="message" class="text-center error">{{ message }}</p>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -65,16 +65,11 @@
         formControlName="senha"
       />
       <button class="btn btn-primary mt-2" type="submit">Log in</button>
-      <button class="btn btn-primary mt-2 ml-2" type="button" (click)="showMe()">Sing in</button>
+      <button class="btn btn-primary mt-2 ml-2" type="button" >Sing in</button>
     </form>
   </div>
 
-  <div
-    id="cadastro"
-    *ngIf="!logado"
-    class="p-2 container"
-    style="display: none"
-  >
+  <div id="cadastro" class="p-2 container"style="display: none">
     <h1>Crie um Usuario</h1>
     <form [formGroup]="createUser" (ngSubmit)="create_user()">
       <label for="" class="mt-2">Seu nome:</label>
@@ -97,7 +92,7 @@
         class="form-control mb-2"
         formControlName="senha"
       />
-      <button class="btn btn-primary mt-2" type="submit" (click)="showMe()">
+      <button class="btn btn-primary mt-2" type="submit">
         Sign in
       </button>
     </form>

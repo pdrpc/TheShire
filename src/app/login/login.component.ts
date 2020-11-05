@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
               console.log('Logado');
               this.submitted = true;
               sessionStorage.setItem('isLoggedIn', 'true');
-              sessionStorage.setItem('token', this.f.id_usuario.value);
+              sessionStorage.setItem('user_ID', this.f.id_usuario.value);
               this.logado = true;
               this.lembrete_service.logado.next(true);
               this.lembrete_service.userMail.next(this.id_usuario);
@@ -112,17 +112,8 @@ export class LoginComponent implements OnInit {
     this.logado = false;
     this.lembrete_service.logado.next(false);
     this.lembrete_service.userMail.next("");
+    sessionStorage.setItem('user_ID', '');
   }
 
-  showMe() {
-    var mostrou = document.getElementById('login');
-    var mostrar = document.getElementById('cadastro');
-    if (mostrar.style.display == '' || mostrar.style.display == 'none') {
-      mostrar.style.display = 'inline';
-      mostrou.style.display = 'none';
-    } else {
-      mostrar.style.display = 'none';
-      mostrou.style.display = 'inline';
-    }
-  }
+  
 }

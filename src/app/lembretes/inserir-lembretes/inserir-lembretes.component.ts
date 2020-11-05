@@ -26,6 +26,10 @@ export class InserirLembretesComponent implements OnInit {
       '',
       Validators.nullValidator && Validators.required
     ),
+    user_ID: new FormControl(
+      '',
+      Validators.nullValidator && Validators.required
+    ),
   });
 
   logado: boolean;
@@ -40,6 +44,9 @@ export class InserirLembretesComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   create_lembrete() {
     // alert(this.createLembrete.value)
+    var user_ID  = sessionStorage.getItem('user_ID');
+    var user_ID_num = parseInt(user_ID)
+    this.createLembrete.get('user_ID').setValue(user_ID_num);
     this.lembreteService
       .CreateLembrete(this.createLembrete.value)
       .pipe(takeUntil(this.destroy$))
