@@ -18,7 +18,6 @@ export class InserirLembretesComponent implements OnInit{
   private authService : LembreteService;
   createLembrete = new FormGroup({
     titulo: new FormControl('', Validators.nullValidator && Validators.required),
-    dataCad: new FormControl('', Validators.nullValidator && Validators.required),
     dataAtv: new FormControl('', Validators.nullValidator && Validators.required),
     body : new FormControl('', Validators.nullValidator && Validators.required)
   });
