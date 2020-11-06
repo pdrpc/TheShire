@@ -6,7 +6,7 @@ import {LembretesListaComponent} from './lembretes/lembretes-lista/lembretes-lis
 import {InserirLembretesComponent} from './lembretes/inserir-lembretes/inserir-lembretes.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent},
   { path: 'inserir', component: InserirLembretesComponent},
   { path: 'lista', component: LembretesListaComponent}
  

@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
               this.id_usuario = this.user_size[index]['user_mail'];
               this.senha = this.user_size[index]['user_pass'];
               var nome = this.user_size[index]['nome_usuario'];
-              var user_ID = this.user_ID[index]['user_ID']
+              var user_ID = this.user_size[index]['user_ID'];
             }
             if (
               this.f.id_usuario.value == this.id_usuario &&
@@ -74,8 +74,8 @@ export class LoginComponent implements OnInit {
             ) {
               console.log('Logado');
               this.submitted = true;
-              sessionStorage.setItem('isLoggedIn', 'true');
-              sessionStorage.setItem('user_ID', this.f.id_usuario.value);
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('user_ID', user_ID);
               this.lembrete_service.user_ID.next(this.user_ID)
               this.logado = true;
               this.lembrete_service.logado.next(true);
@@ -106,11 +106,12 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
+    alert('loged out')
     this.authService.logout();
     this.logado = false;
     this.lembrete_service.logado.next(false);
     this.lembrete_service.userMail.next("");
-    sessionStorage.setItem('user_ID', '');
+    localStorage.setItem('user_ID', '');
   }
 
   showMe() {

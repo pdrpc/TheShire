@@ -1,6 +1,8 @@
-<nav class="navbar navbar-dark bg-primary">
-    <span class="mb-0 h2"><strong>Lembretes</strong></span>
-    <a class="nav-link" routerLink="inserir" type="button">Inserir Lembrete</a>
-    <a class="nav-link"routerLink="lista" type="button">Ver lista de Lembretes</a>
-    <span class="navbar-text "><strong>{{ userMail }}</strong></span>
-  </nav>
+<nav class="navbar navbar-dark bg-dark">
+    <span class="mb-0 h2 font-weight-bolder text-white">Lembretes</span>
+    <a class="nav-link" routerLink="/inserir" type="button" style="text-decoration: none">Inserir Lembrete</a>
+    <a class="nav-link" routerLink="/lista" type="button">Ver lista de Lembretes</a>
+    <a class="nav-link" routerLink="/">Login</a>
+    <span class="navbar-text" *ngIf="logado"><strong>{{ userMail }}</strong></span>
+    <button (click)="logout()">Log Out</button>
+</nav>

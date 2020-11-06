@@ -38,15 +38,15 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void{
-    this.lembretesSubscription.unsubscribe();
-    this.authObserver.unsubscribe();
+    // this.lembretesSubscription.unsubscribe();
+    // this.authObserver.unsubscribe();
   }
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   getLembretes() {
     console.log('entrou no metodo?')
-    var user_ID  = sessionStorage.getItem('user_ID');
+    var user_ID  = localStorage.getItem('user_ID');
     var user_ID_num = parseInt(user_ID)
     var dict_user = { }
     dict_user = {"user_ID" : user_ID_num}
