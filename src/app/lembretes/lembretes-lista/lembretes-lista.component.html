@@ -1,16 +1,18 @@
-<div >
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let lemb of lembrete">
+<body class="bg-dark">
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let lemb of lembrete" class="bg-secondary text-white">
         <mat-expansion-panel-header>{{ lemb.lmbrt_nome }}</mat-expansion-panel-header>
         <hr />
         <p>Cadastrado em: {{ lemb.data_criar | date:'d/MMM/y' }} Para: {{ lemb.data_final | date:'d/MMM/y'}}</p>
         <hr />
         <p>Descrição: {{ lemb.lmbrt_body }}</p>
         <hr />
-      <mat-action-row>
-        <button mat-button color="primary" (click)="EditarLembrete($event.target.value)" value="lmbrt_ID">Editar</button>
-        <button mat-button color="warn" (click)="DeleteLembrete($event.target.value)"value="lmbrt_ID">Deletar</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>  
+        <mat-action-row>
+          <button mat-button color="primary" (click)="EditarLembrete($event.target.value)" value="lmbrt_ID">Editar</button>
+          <button mat-button color="warn" (click)="DeleteLembrete($event.target.value)"value="lmbrt_ID">Deletar</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</body>

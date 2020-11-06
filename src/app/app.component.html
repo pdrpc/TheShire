@@ -1,14 +1,14 @@
-<html>
+<html class="bg-dark">
   <header>
     <app-cabecalho></app-cabecalho>
   </header>
 
-  <body>
+  <body class="bg-dark">
     <div class="container mt-3">
       <main>
-        <router-outlet></router-outlet>
-        <!-- <app-inserir-lembretes></app-inserir-lembretes>
-        <app-lembretes-lista></app-lembretes-lista> -->
+        <app-login *ngIf="!logado"></app-login>
+        <app-inserir-lembretes *ngIf="logado"></app-inserir-lembretes>
+        <app-lembretes-lista *ngIf="logado"></app-lembretes-lista>
       </main>
     </div>
   </body>

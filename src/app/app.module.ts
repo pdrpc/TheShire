@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { LembretesListaComponent } from './lembretes/lembretes-lista/lembretes-lista.component';
 import { InserirLembretesComponent } from './lembretes/inserir-lembretes/inserir-lembretes.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+import { SigninComponent } from './login/signin/signin.component';
+import { LembreteService } from './lembretes/lembretes.service';
+
 
 
 
@@ -26,6 +29,7 @@ import { CabecalhoComponent } from './cabecalho/cabecalho.component';
     LembretesListaComponent,
     InserirLembretesComponent,
     CabecalhoComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,4 +47,4 @@ import { CabecalhoComponent } from './cabecalho/cabecalho.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { LoginService } from './login.service';
+import { LoginService } from '../login.service';
 import { takeUntil } from 'rxjs/operators';
-import { LembreteService } from '../lembretes/lembretes.service';
+import { LembreteService } from '../../lembretes/lembretes.service';
 
 @Component({
   selector: 'app-login',
@@ -112,17 +112,5 @@ export class LoginComponent implements OnInit {
     this.lembrete_service.logado.next(false);
     this.lembrete_service.userMail.next("");
     localStorage.setItem('user_ID', '');
-  }
-
-  showMe() {
-    var hideLogin = document.getElementById('login');
-    var hideSignIn = document.getElementById('cadastro');
-    if (hideSignIn.style.display == '' || hideSignIn.style.display == 'none') {
-      hideSignIn.style.display = 'inline';
-      hideLogin.style.display = 'none';
-    } else {
-      hideSignIn.style.display = 'none';
-      hideLogin.style.display = 'inline';
-    }
   }
 }

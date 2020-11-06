@@ -1,0 +1,30 @@
+<body class="bg-dark">
+    <div id="cadastro" class="p-2 container text-white">
+        <h1>Crie um Usuario</h1>
+        <form [formGroup]="createUser" (ngSubmit)="create_user()">
+          <label for="" class="mt-2">Seu nome:</label>
+          <input
+            style="width: 600px"
+            class="form-control mb-2"
+            formControlName="nome"
+          />
+          <label for="email" class="mt-2">Seu email:</label>
+          <input
+            type="email"
+            style="width: 600px"
+            class="form-control mb-2"
+            formControlName="email"
+          />
+          <label for="" class="mt-2">Sua senha:</label>
+          <input
+            type="password"
+            style="width: 600px"
+            class="form-control mb-2"
+            formControlName="senha"
+          />
+          <button class="btn btn-primary mt-2" type="submit">
+            Sign in
+          </button>
+        </form>
+      </div>
+</body>

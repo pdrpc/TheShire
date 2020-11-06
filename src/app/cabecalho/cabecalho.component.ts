@@ -8,7 +8,8 @@ import { LoginService } from '../login/login.service'
   styleUrls: ['./cabecalho.component.css'],
 })
 export class CabecalhoComponent implements OnInit {
-  userMail: string;logado;
+  userMail: string;
+  logado;
   constructor(public lembreteService: LembreteService, private loginService: LoginService) {
     this.lembreteService.userMail.subscribe((value) => {
       this.userMail = value;
