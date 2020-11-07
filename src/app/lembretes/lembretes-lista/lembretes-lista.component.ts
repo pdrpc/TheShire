@@ -5,6 +5,7 @@ import { Subscription, Observable, from, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common'
+import { Router } from '@angular/router';
 
 
 
@@ -27,7 +28,8 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
   lmbrt_body;
   lmbrt_ID;
 
-  constructor(public lembreteService: LembreteService) {
+  constructor(public lembreteService: LembreteService,
+    private router : Router) {
     this.lembreteService.logado.subscribe( value => {
       this.logado = value;
     });
@@ -69,12 +71,8 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
       // this.data_criar = moment(this.data_criar).format("MMM Do YY");
       // this.data_final = moment(this.data_final).format("MMM Do YY");
       alert(this.data_criar + " " + this.data_final);
-      console.log('Saiu do for?')
+      console.log('Saiu do for?');      
   }
-
-  
-
-  // this.authService.GetUser(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
 
   EditarLembrete(lmbrt_ID, lembIndex){
     var EditarId = {}

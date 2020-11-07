@@ -8,7 +8,8 @@ import { SigninComponent } from './login/signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
   { path: 'inserir', component: InserirLembretesComponent},
   { path: 'lista', component: LembretesListaComponent},
   { path: 'signin', component: SigninComponent },

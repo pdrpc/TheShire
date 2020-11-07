@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Subject } from 'rxjs';
 import { LoginService } from '../login.service';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -14,6 +15,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: LoginService,
+    private router: Router
 
   ) { }
 
@@ -39,6 +41,7 @@ export class SigninComponent implements OnInit {
           alert('Usuario inserido com sucesso');
         }
       });
+      this.router.navigateByUrl('/login');
   }
 
 }

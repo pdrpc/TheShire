@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LembreteService } from '../lembretes/lembretes.service';
 import { LoginService } from '../login/login.service'
 
@@ -10,7 +11,7 @@ import { LoginService } from '../login/login.service'
 export class CabecalhoComponent implements OnInit {
   userMail: string;
   logado;
-  constructor(public lembreteService: LembreteService, private loginService: LoginService) {
+  constructor(public lembreteService: LembreteService, private loginService: LoginService, private router: Router) {
     this.lembreteService.userMail.subscribe((value) => {
       this.userMail = value;
       // alert(this.userMail)
@@ -21,11 +22,12 @@ export class CabecalhoComponent implements OnInit {
   }
 
   logout() {
-    alert('loged out')
     this.loginService.logout();
     this.logado = false;
     localStorage.setItem('user_ID', '');
     console.log(this.logado)
+    this.router.navigateByUrl('/login');
+    alert('Tenha um bom dia!')
   }
 
   ngOnInit(): void {}
