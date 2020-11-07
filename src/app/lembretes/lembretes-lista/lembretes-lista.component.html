@@ -1,5 +1,6 @@
 <body class="bg-dark">
-  <div>
+  <div class="container p-2">
+    <h1 class="mb-4 text-white">Lista de lembretes</h1>
     <mat-accordion>
       <mat-expansion-panel *ngFor="let lemb of lembrete; let lembIndex = index" class="bg-secondary text-white">
         <mat-expansion-panel-header>{{ lemb.lmbrt_nome }}</mat-expansion-panel-header>

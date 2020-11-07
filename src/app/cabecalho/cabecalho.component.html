@@ -1,8 +1,40 @@
-<nav class="navbar navbar-dark bg-secondary">
+<!-- <nav class="navbar navbar-dark bg-secondary">
     <span class="mb-0 h2 font-weight-bolder text-white">Lembretes</span>
     <a class="nav-link" routerLink="/inserir" type="button" style="text-decoration: none; color: aliceblue">Inserir Lembrete</a>
     <a class="nav-link" routerLink="/lista" type="button" style="text-decoration: none; color: aliceblue">Ver lista de Lembretes</a>
     <span class="navbar-text" *ngIf="logado"><strong>{{ userMail }}</strong></span>
     <a class="nav-link" routerLink="/" style="text-decoration: none; color: aliceblue" >Login</a>
     <button class="btn btn-secondary" (click)="logout()" *ngIf="logado">Log Out</button>
+</nav> -->
+
+<nav class="navbar navbar-expand navbar-dark bg-secondary">
+    <span class="navbar-brand mb-0 mr-2 font-weight-bolder">Lembretes</span>
+  
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/inserir">Novo Lembrete</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/lista">Lista de Lembretes</a>
+        </li>
+      </ul>
+      <!-- <ul class="navbar-nav btn-group">
+        <li>
+            <span class="navbar-text" *ngIf="logado"><strong>{{ userMail }}</strong></span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn btn-secondary" routerLink="/signin">Sign in</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn btn-secondary" routerLink="/">Log in</a>
+        </li>
+        <li>
+            <button class="btn btn-secondary" (click)="logout()" *ngIf="logado">Log out</button>
+        </li>
+      </ul> -->
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-secondary" routerLink="/signin">Sign in</a>
+        <a class="btn btn-secondary" routerLink="/">Log in</a>
+        <button class="btn btn-secondary" (click)="logout()" *ngIf="logado" [routerLink]="''">Log out</button>
+      </div>
 </nav>

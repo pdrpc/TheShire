@@ -1,3 +1,7 @@
 a{
-    text-decoration: aliceblue;
+    text-decoration: none;
+}
+.navbar-brand
+{
+    font-size: xx-large;
 }

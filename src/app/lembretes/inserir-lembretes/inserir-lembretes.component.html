@@ -1,15 +1,15 @@
 <body class="bg-dark">
-  <div class="container text-white">
-    <h1>Insira seu lembrete</h1>
+  <div class="container p-2 text-white">
+    <h1>Novo lembrete</h1>
     <form [formGroup]="createLembrete" (ngSubmit)="create_lembrete()">
-      <label for="lmbrt_nome" class="mt-2">Seu Titulo: </label>
+      <label for="lmbrt_nome" class="mt-2">Adicionar título:</label>
       <input class="form-control mb-2" formControlName="lmbrt_nome" />
-      <label for="data_final" class="mt-2">Digite a data</label>
+      <label for="data_final" class="mt-2">Adicionar data</label>
       <input class="form-control mb-2" type="date" formControlName="data_final" />
-      <label for="lmbrt_body" type="text" class="mt-2">Digite o lembrete: </label>
+      <label for="lmbrt_body" type="text" class="mt-2">Adicionar descrição</label>
       <input class="form-control mb-2" formControlName="lmbrt_body" />
       <div>
-        <button class="btn btn-primary mt-2">Inserir Lembrete</button>
+        <button class="btn btn-primary mt-2">Salvar lembrete</button>
       </div>
     </form>
   </div>
