@@ -1,4 +1,5 @@
-module.exports = { adicionarLembrete, GetLembretes };
+module.exports = { adicionarLembrete, GetLembretes, deleteLembrete };
+const { query } = require("express");
 const moment = require("moment");
 function adicionarLembrete(conn, router) {
   router.post("/api/lembretes-lembrete-create", (req, res) => {
@@ -21,11 +22,23 @@ function adicionarLembrete(conn, router) {
 function GetLembretes(conn, router){
     router.post("/api/lembretes-lembrete-get", (req, res) =>{
         var user_ID = req.body.user_ID
-        query = `SELECT lmbrt_nome,data_criar,data_final,lmbrt_body FROM lembretesLista where user_ID = '${user_ID}'`;
+        var query = `SELECT lmbrt_nome,data_criar,data_final,lmbrt_body, lmbrt_ID FROM lembretesLista where user_ID = '${user_ID}'`;
         conn.query(query, function (error, results, fields){
             if(error) return console.log(error);
             console.log('get lembretes')
             return res.send(results);
         });
     });    
+}
+
+function deleteLembrete (conn, router){
+  router.delete("/api/lembretes-lembrete-delete/:id", (req,res) =>{
+      var DeletarId = req.params.id;
+      var query = `DELETE from lembretesLista where lmbrt_ID = '${DeletarId}';`
+      conn.query(query, function (error, results, fields){
+        if(error) return console.log(error);
+        console.log('delete lembretes')
+        return res.send(results);
+      });
+  });
 }

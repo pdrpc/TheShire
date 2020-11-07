@@ -63,9 +63,38 @@
         formControlName="senha"
         placeholder="Senha"
       />
-      <button class="btn btn-primary mt-2" type="submit">Log in</button>      
+      <button class="btn btn-primary mt-2" type="submit">Log in</button>
+      <button class="btn btn-primary mt-2 ml-2" type="button" (click)="showMe()">Sign in</button>
     </form>
-    <p class="text-white font-weight-bold" style="display: inline-block;">Não é cadastrado? Clique<a class="nav-link font-weight-bolder" routerLink="/signin" style="text-decoration: none; color: aliceblue; display: inline-block;">AQUI</a>para se cadastrar!
-    </p>
   </div>
+
+  <div id="cadastro" class="p-2 container text-white" style="display: none;">
+    <h1>Crie um Usuario</h1>
+    <form [formGroup]="createUser" (ngSubmit)="create_user()">
+      <label for="" class="mt-2">Seu nome:</label>
+      <input
+        style="width: 600px"
+        class="form-control mb-2"
+        formControlName="nome"
+      />
+      <label for="email" class="mt-2">Seu email:</label>
+      <input
+        type="email"
+        style="width: 600px"
+        class="form-control mb-2"
+        formControlName="email"
+      />
+      <label for="" class="mt-2">Sua senha:</label>
+      <input
+        type="password"
+        style="width: 600px"
+        class="form-control mb-2"
+        formControlName="senha"
+      />
+      <button class="btn btn-primary mt-2" type="submit" (click)="showMe()">
+        Sign in
+      </button>
+    </form>
+  </div>
+
 </body>

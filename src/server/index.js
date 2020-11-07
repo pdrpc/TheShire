@@ -47,6 +47,7 @@ connection.connect(function(err){
     // user.create_user(connection,router)
     lista.adicionarLembrete(connection,router)
     lista.GetLembretes(connection, router)
+    lista.deleteLembrete(connection, router)
   })
 
   function create_user(conn){

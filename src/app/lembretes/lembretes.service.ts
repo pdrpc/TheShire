@@ -24,5 +24,9 @@ export class LembreteService {
     return this.http.post("/api/lembretes-lembrete-get",user_Id);
   }
 
+  public deleteLembrete(DeletarId) {
+    return this.http.delete(`/api/lembretes-lembrete-delete/${DeletarId}`)
+  }
+
 
 }

@@ -1,16 +1,17 @@
 <body class="bg-dark">
   <div>
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let lemb of lembrete" class="bg-secondary text-white">
+      <mat-expansion-panel *ngFor="let lemb of lembrete; let lembIndex = index" class="bg-secondary text-white">
         <mat-expansion-panel-header>{{ lemb.lmbrt_nome }}</mat-expansion-panel-header>
         <hr />
         <p>Cadastrado em: {{ lemb.data_criar | date:'d/MMM/y' }} Para: {{ lemb.data_final | date:'d/MMM/y'}}</p>
         <hr />
         <p>Descrição: {{ lemb.lmbrt_body }}</p>
         <hr />
+        <p> {{ lemb.lmbrt_ID }}</p>
         <mat-action-row>
-          <button mat-button color="primary" (click)="EditarLembrete($event.target.value)" value="lmbrt_ID">Editar</button>
-          <button mat-button color="warn" (click)="DeleteLembrete($event.target.value)"value="lmbrt_ID">Deletar</button>
+          <button mat-button color="primary" (click)="EditarLembrete(lemb.lmbrt_ID, lembIndex)">Editar</button>
+          <button mat-button color="warn" (click)="DeleteLembrete(lemb.lmbrt_ID, lembIndex)">Deletar</button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>

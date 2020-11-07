@@ -25,6 +25,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
   data_criar;
   data_final;
   lmbrt_body;
+  lmbrt_ID;
 
   constructor(public lembreteService: LembreteService) {
     this.lembreteService.logado.subscribe( value => {
@@ -63,6 +64,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
         this.data_criar = this.data_criar[index]['data_criar'];
         this.data_final = this.data_final[index]['data_final'];
         this.lmbrt_body = this.lmbrt_body[index]['lmbrt_body'];
+        this.lmbrt_ID = this.lmbrt_ID[index]['lmbrt_ID']
       }
       // this.data_criar = moment(this.data_criar).format("MMM Do YY");
       // this.data_final = moment(this.data_final).format("MMM Do YY");
@@ -74,13 +76,17 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
 
   // this.authService.GetUser(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
 
-  EditarLembrete(lmbrt_ID){
+  EditarLembrete(lmbrt_ID, lembIndex){
     var EditarId = {}
     EditarId = {"idLembrete": lmbrt_ID };
   }
 
-  DeleteLembrete(lmbrt_ID){
-    var DeletarId = {}
-    DeletarId = {"idLembrete": lmbrt_ID };
+  DeleteLembrete(lmbrt_ID, lembIndex){
+    this.lembreteService.deleteLembrete(lmbrt_ID).pipe(takeUntil(this.destroy$)).subscribe((data) => {
+      if (data != null) {
+        this.lembrete.splice(lembIndex, 1)
+        alert('Lembrete deletado com sucesso');
+      }
+    });
   }
 }
