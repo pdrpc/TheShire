@@ -48,6 +48,8 @@ connection.connect(function(err){
     lista.adicionarLembrete(connection,router)
     lista.GetLembretes(connection, router)
     lista.deleteLembrete(connection, router)
+    lista.getLembrete(connection, router)
+    lista.editLembrete(connection, router)
   })
 
   function create_user(conn){

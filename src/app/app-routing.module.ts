@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'inserir', component: InserirLembretesComponent},
   { path: 'lista', component: LembretesListaComponent},
   { path: 'signin', component: SigninComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'editar/:id', component: InserirLembretesComponent }
 ];
 
 

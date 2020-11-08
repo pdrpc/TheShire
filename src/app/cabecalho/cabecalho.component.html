@@ -10,12 +10,15 @@
 <nav class="navbar navbar-expand navbar-dark bg-secondary">
     <span class="navbar-brand mb-0 mr-2 font-weight-bolder">Lembretes</span>
   
-      <ul class="navbar-nav mr-auto">
+      <ul *ngIf="logado" class="navbar-nav mr-auto">
         <li class="nav-item">
             <a class="nav-link" routerLink="/inserir">Novo Lembrete</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" routerLink="/lista">Lista de Lembretes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
         </li>
       </ul>
       <!-- <ul class="navbar-nav btn-group">
@@ -33,7 +36,7 @@
         </li>
       </ul> -->
       <div class="btn-group" role="group" aria-label="Basic example">
-        <span class="navbar-text font-weight-bold mr-16" *ngIf="logado"> Bem vindo {{ userMail }}</span>
+        <span class="navbar-text font-weight-bold mr-3" *ngIf="logado"> Bem vindo {{ userMail }}</span>
         <a class="btn btn-secondary" *ngIf="!logado" routerLink="/signin">Sign in</a>
         <a class="btn btn-secondary" *ngIf="!logado" routerLink="/login">Log in</a>
         <button class="btn btn-secondary" (click)="logout()" *ngIf="logado">Log out</button>

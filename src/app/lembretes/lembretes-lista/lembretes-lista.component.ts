@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class LembretesListaComponent implements OnInit, OnDestroy {
 
   
-  logado : boolean;
+  logado : boolean = false;
 
   private lembretesSubscription: Subscription;
   private authObserver: Subscription;
@@ -30,9 +30,12 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
 
   constructor(public lembreteService: LembreteService,
     private router : Router) {
-    this.lembreteService.logado.subscribe( value => {
-      this.logado = value;
-    });
+      const user_ID = localStorage.getItem('user_ID')
+      if(user_ID == null){
+        this.router.navigateByUrl('/login');
+      }else{
+        this.logado = true;
+      }
   }
 
   ngOnInit(): void {
@@ -75,8 +78,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
   }
 
   EditarLembrete(lmbrt_ID, lembIndex){
-    var EditarId = {}
-    EditarId = {"idLembrete": lmbrt_ID };
+    this.router.navigate(['/editar', lmbrt_ID])
   }
 
   DeleteLembrete(lmbrt_ID, lembIndex){

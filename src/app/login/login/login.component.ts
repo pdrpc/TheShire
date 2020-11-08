@@ -40,11 +40,10 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // this.loginForm = this.formBuilder.group({
-    //   id_usuario: ['', Validators.required],
-    //   senha: ['', Validators.required]
-    // });
-    // this.authService.logout();
+    const user_ID = localStorage.getItem('user_ID')
+    if(user_ID != null){
+      this.router.navigateByUrl('/dashboard');
+    }
   }
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -66,7 +65,7 @@ export class LoginComponent implements OnInit {
               this.id_usuario = this.user_size[index]['user_mail'];
               this.senha = this.user_size[index]['user_pass'];
               var nome = this.user_size[index]['nome_usuario'];
-              var user_ID = this.user_size[index]['user_ID'];
+              var user_ID = this.user_size[index]['user_ID'];              
             }
             if (
               this.f.id_usuario.value == this.id_usuario &&
@@ -76,10 +75,12 @@ export class LoginComponent implements OnInit {
               this.submitted = true;
               localStorage.setItem('isLoggedIn', 'true');
               localStorage.setItem('user_ID', user_ID);
+              localStorage.setItem('user_mail', this.id_usuario)
               this.lembrete_service.user_ID.next(this.user_ID)
               this.logado = true;
               this.lembrete_service.logado.next(true);
               this.lembrete_service.userMail.next(this.id_usuario);
+              window.location.href= '/dashboard';
               // alert(this.id_usuario)
               // this.dataSharingService.isUserLoggedIn.next(true);
               // this.lembrete_service.nomeUser.next(nome);
@@ -89,7 +90,6 @@ export class LoginComponent implements OnInit {
             }
           }
         });
-        this.router.navigateByUrl('/dashboard');
     }
   }
 
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
     this.logado = false;
     this.lembrete_service.logado.next(false);
     this.lembrete_service.userMail.next("");
-    localStorage.setItem('user_ID', '');
+    localStorage.clear();
     // this.router.navigateByUrl('/');
   }
 }

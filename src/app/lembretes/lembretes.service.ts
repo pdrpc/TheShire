@@ -24,9 +24,18 @@ export class LembreteService {
     return this.http.post("/api/lembretes-lembrete-get",user_Id);
   }
 
+  public getLembrete(lembreteId){
+    return this.http.get(`/api/lembretes-lembrete-get/${lembreteId}`)
+  }
+
+  public EditLembrete(lembrete_ID, Lembrete){
+    return this.http.put(`/api/lembretes-lembrete-update/${lembrete_ID}`, Lembrete)
+  }
+
   public deleteLembrete(DeletarId) {
     return this.http.delete(`/api/lembretes-lembrete-delete/${DeletarId}`)
   }
+
 
 
 }
