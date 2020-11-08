@@ -26,7 +26,6 @@ export class SigninComponent implements OnInit {
     nome: new FormControl('', Validators.nullValidator && Validators.required),
     email: new FormControl('', Validators.nullValidator && Validators.required),
     senha: new FormControl('', Validators.nullValidator && Validators.required),
-    // nick: new FormControl('', Validators.nullValidator && Validators.required),
   });
 
   destroy$: Subject<boolean> = new Subject<boolean>();

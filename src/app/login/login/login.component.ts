@@ -17,10 +17,9 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    // private router : Router,
     private authService: LoginService,
     private lembrete_service: LembreteService
-  ) // private dataSharingService : ProdutosHeaderServiceService
+  )
   {}
   message: string;
   returnUrl: string;
@@ -81,10 +80,6 @@ export class LoginComponent implements OnInit {
               this.lembrete_service.logado.next(true);
               this.lembrete_service.userMail.next(this.id_usuario);
               window.location.href= '/dashboard';
-              // alert(this.id_usuario)
-              // this.dataSharingService.isUserLoggedIn.next(true);
-              // this.lembrete_service.nomeUser.next(nome);
-              // this.router.navigate([this.returnUrl]);
             } else {
               this.message = 'Email ou senha incorretos!';
             }
