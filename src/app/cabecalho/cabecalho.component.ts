@@ -33,7 +33,6 @@ export class CabecalhoComponent {
     localStorage.clear();
     console.log(this.logado)
     this.router.navigateByUrl('/login');
-    alert('Tenha um bom dia!')
   }
 
   

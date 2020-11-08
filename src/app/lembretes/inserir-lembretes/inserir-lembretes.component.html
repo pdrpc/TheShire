@@ -2,6 +2,9 @@
   <div class="container p-2 text-white bg-dark">
     <h1 *ngIf="!Lembrete.lmbrt_ID">Novo lembrete</h1>
     <h1 *ngIf="Lembrete.lmbrt_ID">Editar lembrete</h1>
+    <div id="mensagem">
+      <p *ngIf="messagem_inseriu" class="text-center error">{{ messagem_inseriu }}</p>
+    </div>
     <form [formGroup]="createLembrete" (ngSubmit)="create_lembrete()">
       <label for="lmbrt_nome" class="mt-2">Adicionar título:</label>
       <input class="form-control mb-2" [(ngModel)]="Lembrete.lmbrt_nome" formControlName="lmbrt_nome" />

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Lembrete } from '../lembrete.model';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, throwIfEmpty } from 'rxjs/operators';
 import { LembreteService } from '../lembretes.service';
 import { Subject } from 'rxjs';
 import * as moment from 'moment';
@@ -22,6 +22,7 @@ export class InserirLembretesComponent implements OnInit {
   };
   logado: boolean = false;
   user_ID: number;
+  messagem_inseriu  =  null
 
   createLembrete = new FormGroup({
     lmbrt_nome: new FormControl('',Validators.nullValidator && Validators.required),
@@ -68,7 +69,7 @@ export class InserirLembretesComponent implements OnInit {
             data_final: moment(data_final).format('yyyy-MM-DD'),
             lmbrt_body,
           }
-          console.log(this.Lembrete)
+
         }
       });
     })
@@ -76,7 +77,6 @@ export class InserirLembretesComponent implements OnInit {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   create_lembrete() {
-    // alert(this.createLembrete.value)
     var user_ID  = localStorage.getItem('user_ID');
     console.log(this.Lembrete)
     if(user_ID == ''){
@@ -85,11 +85,9 @@ export class InserirLembretesComponent implements OnInit {
     }else if(this.Lembrete && this.Lembrete.lmbrt_ID != null){
       const lembreteId = this.Lembrete.lmbrt_ID;
       this.lembreteService.EditLembrete(lembreteId, this.Lembrete).pipe(takeUntil(this.destroy$)).subscribe((data) => {
-        if (data != null) {
-          alert('Lembrete modificado com sucesso');
-        } else {
+        if (data == null) {
           alert('O lembrete não foi modificado');
-        }
+        } 
         window.location.href = '/dashboard';
       });
     }else{
@@ -98,11 +96,9 @@ export class InserirLembretesComponent implements OnInit {
       console.log(this.createLembrete.value)   
       this.lembreteService.CreateLembrete(this.createLembrete.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
           console.log('message::::', data);
-          if (data != null) {
-            alert('Lembrete cadastrado com sucesso');
-          } else {
+          if (data == null) {
             alert('O lembrete não foi cadastrado');
-          }
+          } 
           window.location.href = '/dashboard';
         });
     }

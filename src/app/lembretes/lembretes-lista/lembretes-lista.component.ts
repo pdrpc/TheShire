@@ -19,14 +19,13 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
   
   logado : boolean = false;
 
-  private lembretesSubscription: Subscription;
-  private authObserver: Subscription;
-  public lembrete
+  private lembretesSubscription: Subscription;private authObserver: Subscription;public lembrete;public  lista_vazia
   lmbrt_nome;
   data_criar;
   data_final;
   lmbrt_body;
   lmbrt_ID;
+
 
   constructor(public lembreteService: LembreteService,
     private router : Router) {
@@ -44,8 +43,6 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void{
-    // this.lembretesSubscription.unsubscribe();
-    // this.authObserver.unsubscribe();
   }
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -57,7 +54,8 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
     var dict_user = { }
     dict_user = {"user_ID" : user_ID_num}
     this.lembreteService.GetLembretes(dict_user).subscribe(
-      data => { this.lembrete = data, console.log("Valor que vem da api " + data)
+      data => { this.lembrete = data
+      if (data  ==  '') { this.lista_vazia  = "Você não tem lembretes adicionados"}
         console.log(data)
       },    
   
@@ -70,11 +68,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
         this.data_final = this.data_final[index]['data_final'];
         this.lmbrt_body = this.lmbrt_body[index]['lmbrt_body'];
         this.lmbrt_ID = this.lmbrt_ID[index]['lmbrt_ID']
-      }
-      // this.data_criar = moment(this.data_criar).format("MMM Do YY");
-      // this.data_final = moment(this.data_final).format("MMM Do YY");
-      alert(this.data_criar + " " + this.data_final);
-      console.log('Saiu do for?');      
+      } 
   }
 
   EditarLembrete(lmbrt_ID, lembIndex){
@@ -85,7 +79,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
     this.lembreteService.deleteLembrete(lmbrt_ID).pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data != null) {
         this.lembrete.splice(lembIndex, 1)
-        alert('Lembrete deletado com sucesso');
+        alert('Lembrete deletado com sucesso')
       }
     });
   }
