@@ -35,7 +35,7 @@ export class SigninComponent implements OnInit {
       .CreateUser(this.createUser.value)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        console.log('message::::', data);
+        console.log('message >>', data);
         if (data != null) {
           alert('Usuario inserido com sucesso');
         }

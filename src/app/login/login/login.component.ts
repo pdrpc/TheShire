@@ -52,18 +52,15 @@ export class LoginComponent implements OnInit {
   }
   login() {
     if (this.loginForm.invalid) {
-      alert(this.loginForm);
       return;
     } else {
       this.authService.GetUser(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((data) => {
           console.log('message::::', data);
           if (data != null) {
             this.user_size = data;
-            alert(this.user_size);
             for (let index = 0; index < this.user_size.length; index++) {
               this.id_usuario = this.user_size[index]['user_mail'];
               this.senha = this.user_size[index]['user_pass'];
-              var nome = this.user_size[index]['nome_usuario'];
               var user_ID = this.user_size[index]['user_ID'];              
             }
             if (
@@ -93,12 +90,11 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    alert('loged out')
+    alert('logged out')
     this.authService.logout();
     this.logado = false;
     this.lembrete_service.logado.next(false);
     this.lembrete_service.userMail.next("");
     localStorage.clear();
-    // this.router.navigateByUrl('/');
   }
 }

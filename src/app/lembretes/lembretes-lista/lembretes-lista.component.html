@@ -1,6 +1,6 @@
 <body class="bg-dark">
   <div class="container p-2 bg-dark">
-    <h1 class="mb-4 text-white">Lista de lembretes</h1>
+    <h1 *ngIf="ver_lista" class="mb-4 text-white">Lista de lembretes</h1>
     <div id="mensagem">
       <p *ngIf="lista_vazia" class="text-center error font-weight-bold text-white ">{{ lista_vazia }}</p>
     </div>

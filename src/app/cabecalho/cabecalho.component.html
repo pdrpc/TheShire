@@ -36,7 +36,7 @@
         </li>
       </ul> -->
         <div class="btn-group" role="group" aria-label="Basic example">
-            <span class="navbar-text font-weight-bold mr-3 pr-5" *ngIf="logado"> Bem vindo {{ userMail }}</span>
+            <b class="navbar-text font-weight-bold mr-3 pr-5" *ngIf="logado"> Bem vindo {{ userMail }}</b>
             <a class="btn btn-secondary" *ngIf="!logado" routerLink="/signin">Sign in</a>
             <a class="btn btn-secondary" *ngIf="!logado" routerLink="/login">Log in</a>
             <button class="btn btn-secondary" (click)="logout()" *ngIf="logado">Log out</button>

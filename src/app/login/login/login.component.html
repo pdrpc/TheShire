@@ -1,48 +1,5 @@
 <body class="bg-dark">
   
-
-  <!--     <div  id="login"  class="p-2 container list-group list-group-flush">
-            <div class="p-2 container" *ngIf="!logado" class="loginBox">
-        <h1>Log in</h1>
-        <p *ngIf="message" class="text-center error">{{ message }}</p>
-        <form [formGroup]="loginForm" (ngSubmit)="login()">
-          <div
-            style="width: 600px"
-            [ngClass]="{ 'has-error': f.id_usuario.errors }"
-          >
-            <label for="id_usuario">Coloque seu nome</label>
-            <div class="form-group clearfix list-group-item">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="id_usuario"
-              />
-            </div>
-          </div>
-          <div
-            class="form-group clearfix"
-            [ngClass]="{ 'has-error': f.senha.errors }"
-          >
-            <label for="senha" class="">Senha</label>
-            <div class="list-group-item" style="width: 600px">
-              <input
-                type="password"
-                class="form-control"
-                formControlName="senha"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary" type="submit">Log in</button>
-          </div>
-        </form>
-        <div>
-          <button class="btn btn-primary" (click)="showMe()">Sing in</button>
-        </div>
-      </div>
-    </div>
- -->
-
   <div id="login" class="p-2 container loginBox text-white">
     <h1>Sou cadastrado</h1>
     <p *ngIf="message" class="text-center error">{{ message }}</p>
@@ -63,8 +20,8 @@
         formControlName="senha"
         placeholder="Senha"
       />
-      <button class="btn btn-primary mt-2" type="submit">Log in</button>
-      <button class="btn btn-primary mt-2 ml-2" type="button" [routerLink]="'/signin'">Sign in</button>
+      <button class="btn btn-primary mt-2 "  type="submit">Log in</button>
+      <!-- <button  class="btn btn-primary mt-2 ml-2" type="button" [routerLink]="'/signin'">Sign in</button> -->
     </form>
   </div>
 </body>

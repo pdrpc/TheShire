@@ -19,7 +19,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
   
   logado : boolean = false;
 
-  private lembretesSubscription: Subscription;private authObserver: Subscription;public lembrete;public  lista_vazia
+  private lembretesSubscription: Subscription;private authObserver: Subscription;public lembrete;public  lista_vazia;public ver_lista;
   lmbrt_nome;
   data_criar;
   data_final;
@@ -48,15 +48,14 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   getLembretes() {
-    console.log('entrou no metodo?')
     var user_ID  = localStorage.getItem('user_ID');
     var user_ID_num = parseInt(user_ID)
     var dict_user = { }
     dict_user = {"user_ID" : user_ID_num}
     this.lembreteService.GetLembretes(dict_user).subscribe(
       data => { this.lembrete = data
-      if (data  ==  '') { this.lista_vazia  = "Você não tem lembretes adicionados"}
-        console.log(data)
+      if (data  ==  '') { this.lista_vazia  = "Você não tem lembretes adicionados"; this.ver_lista=false}
+      else{this.ver_lista = true;}
       },    
   
       err => console.error(err),
@@ -80,6 +79,7 @@ export class LembretesListaComponent implements OnInit, OnDestroy {
       if (data != null) {
         this.lembrete.splice(lembIndex, 1)
         alert('Lembrete deletado com sucesso')
+        window.location.reload();
       }
     });
   }
